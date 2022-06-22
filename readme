@@ -1,0 +1,47 @@
+1. npm init 으로 시작
+
+2. npm install express
+
+3. npm install cors
+
+4. server.js 생성하여 express 구문 작성
+
+5. 브라우저의 주소창에서는 보통 get 만 받아올 수 있기 때문에 post를 하고싶으면
+    포스트맨에서 하면 됨. request 새로 생성하여 post값 요청
+
+6. get요청의 /products에 아래 값을 넣어준다.
+
+ products: [
+      {
+        id: 1,
+        name: "농구공",
+        price: 10000,
+        seller: "Jordan",
+        imageUrl: "images/products/basketball1.jpeg",
+      },
+      {
+        id: 2,
+        name: "축구공",
+        price: 50000,
+        seller: "Jordan",
+        imageUrl: "images/products/soccerball1.jpg",
+      },
+      {
+        id: 3,
+        name: "키보드",
+        price: 15000,
+        seller: "Grab",
+        imageUrl: "images/products/keyboard1.jpg",
+      },
+    ]
+
+7. web에서 axios 주소 변경
+
+8. app.get 에서 query를 뽑아낸 뒤 console.log로 query값을 찍어주고
+        웹에서 http://localhost:8080/products?id=1000 하면 1000이란 값이 query로 찍힘
+
+9. app.post 에서 req.body 값을 body 변수에 넣은 후 body값을 send로 보내면
+    포스트맨에서 post값으로 넣은 값이 body에 담긴다.
+
+10. app.get("/products/:id") 를 하나 더 만들어서 id 값에 어떤 숫자를 넣든
+    동적으로 경로를 관리할 수 있게 파라미터 사용하기. req.params
