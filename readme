@@ -45,3 +45,65 @@
 
 10. app.get("/products/:id") 를 하나 더 만들어서 id 값에 어떤 숫자를 넣든
     동적으로 경로를 관리할 수 있게 파라미터 사용하기. req.params
+
+    46. squlite, sequelize 설치하기
+    npm install sequelize sqlite3
+
+11. 터미널 환경에서 sequelize 관련된 파일을 만들 때 손쉽게 만들 수 있게 도와줌
+    npm install -g sequelize-cli
+
+12. sequelize init으로 실행
+
+13. sequelize는 mysql을 사용하기 때문에 config 들어가서 다 지우고 아래 내용 붙여넣기
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "./database.sqlite3"
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": ":memory"
+  },
+  "production": {
+    "dialect": "sqlite",
+    "storage": "./database.sqlite3"
+  }
+}
+
+14. server.js에서 models 불러와서 models에 저장
+
+15. app.listen에 models.sequelize.sync()로 접근
+    models에 테이블 관련된 모델링에 필요한 정보를 넣을 것인데, 그 때 sync를 시키겠다라는 뜻
+    models에 입력한 정보를 database와 동기화시킨 다는 뜻.
+
+16. then, actch를 해주고 catch에는 process.exit()을 써서 에러가 나면 프로세스를   
+    종료시키게 한다.
+
+17. node로 server.js를 실행시키면 dtabase.sqlite3 파일 생성
+
+18. models에 product.js를 실행시켜서 module을 export해주는데
+    sequelize와 DataTypes를 인자로 가진 함수를 만든다. 
+
+19. 그 함수 안에 테이블을 만들어주는데 sequelize.define으로 하며 테이블 이름은 Product
+    그리고 그 안에는 name, price, seller, desciprtion, imageUrl 정보가 들어감.
+    type에는 DataType이 무엇인지 (String or INTEGER 등등) 그리고 괄호 안에는 몇글자일지
+    allowNull은 false로 하면 필수, true하면 필수가 아니게 된다.
+
+20. 여기서 databa.sqlite3 파일을 보면 데이터가 깨져서 보이기 때문에
+    DB Browser sqlite3를 사용하여 데이터를 본다.
+
+21. server.js의 app.post("/products")에서 body의 값 name, description, price, seller를 destrucring 하고 models.Product.create를 통해 Product 테이블 안에 들어가는 객체를 생성한다.name 등등
+
+22. then과 catch 작성
+
+23. postman으로 가서 post로 description과 seller를 넣고 send를 하면 값을 받는다.
+
+23. if문을 사용하여 name, description, seller, price 중 하나라도 없으면 나오는 
+    방어코드를 짠다.
+
+24. get reqeust에다가 models.Product.findall()을 통해 안에 있는 모든 데이터를 조회
+    기존에 직접 데이터를 넣었던 products 정보는 삭제
+
+25. postman에서 get요청을 하면 sequelize에 넣었던 데이터가 모두 조회되는 것을 알 수 있다.
+
+26. 
