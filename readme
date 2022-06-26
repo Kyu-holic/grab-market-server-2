@@ -92,7 +92,7 @@
 20. 여기서 databa.sqlite3 파일을 보면 데이터가 깨져서 보이기 때문에
     DB Browser sqlite3를 사용하여 데이터를 본다.
 
-21. server.js의 app.post("/products")에서 body의 값 name, description, price, seller를 destrucring 하고 models.Product.create를 통해 Product 테이블 안에 들어가는 객체를 생성한다.name 등등
+21. server.js의 app.post("/products")에서 body의 값 name, description, price, seller를 destrucring 하고 models.Product.create를 통해   테이블 안에 들어가는 객체를 생성한다.name 등등
 
 22. then과 catch 작성
 
